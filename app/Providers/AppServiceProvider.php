@@ -23,6 +23,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->registerDevelopment();
+    }
+
+    /**
+     * Register for development environment
+     *
+     * @return void
+     */
+    public function registerDevelopment()
+    {
+        if (\Config::get('app.debug')) {
+            app()->register(\Barryvdh\Debugbar\ServiceProvider::class);
+        }
     }
 }
